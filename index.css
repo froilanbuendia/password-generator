@@ -77,20 +77,24 @@ p {
   font-size: 16px;
 }
 
+.password-display:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .length-container {
   display: flex;
   justify-content: center;
   gap: 10px;
   color: #d5d4d8;
+  margin-block: 40px;
 }
 
 .length-input {
-  width: 25%;
   height: 40px;
   border-radius: 6px;
   border: none;
-  padding: 0 10px;
-  margin-block: 40px;
+  text-align: center;
 }
 
 .input-container {
