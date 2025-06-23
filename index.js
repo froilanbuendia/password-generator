@@ -91,3 +91,255 @@ const characters = [
   "?",
   "/",
 ];
+
+const char = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+const charSym = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+  "~",
+  "`",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "-",
+  "+",
+  "=",
+  "{",
+  "[",
+  "}",
+  "]",
+  ",",
+  "|",
+  ":",
+  ";",
+  "<",
+  ">",
+  ".",
+  "?",
+  "/",
+];
+const charNum = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+];
+
+let passwordDisplay1 = document.getElementById("password-display-1");
+let passwordDisplay2 = document.getElementById("password-display-2");
+
+let passwordLength = document.getElementById("length");
+let includeNumbers = document.getElementById("numbers");
+let includeSymbols = document.getElementById("symbols");
+
+const generatePassword = () => {
+  for (let i = 0; i < 2; i++) {
+    let password = "";
+    if (includeNumbers.checked && includeSymbols.checked) {
+      for (let i = 0; i < passwordLength.value; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+      }
+    } else if (includeNumbers.checked && !includeSymbols.checked) {
+      for (let i = 0; i < passwordLength.value; i++) {
+        const randomIndex = Math.floor(Math.random() * charNum.length);
+        password += charNum[randomIndex];
+      }
+    } else if (!includeNumbers.checked && includeSymbols.checked) {
+      for (let i = 0; i < passwordLength.value; i++) {
+        const randomIndex = Math.floor(Math.random() * charSym.length);
+        password += charSym[randomIndex];
+      }
+    } else {
+      for (let i = 0; i < passwordLength.value; i++) {
+        const randomIndex = Math.floor(Math.random() * char.length);
+        password += char[randomIndex];
+      }
+    }
+    if (i === 0) {
+      passwordDisplay1.textContent = password;
+    } else {
+      passwordDisplay2.textContent = password;
+    }
+  }
+};
+
+const copyFirstPassword = () => {
+  navigator.clipboard.writeText(passwordDisplay1.textContent);
+  alert("Password copied to clipboard");
+};
+
+const copySecondPassword = () => {
+  navigator.clipboard.writeText(passwordDisplay2.textContent);
+  alert("Password copied to clipboard");
+};
